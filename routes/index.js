@@ -15,6 +15,7 @@ router.use("/board", updatePost);
 router.use("/board", like);
 
 router.use("/user", user);
-router.use("/:board_id/comment", comment)
+
+router.use("/board/:board_id/comment", comment)
 
 module.exports = router;
