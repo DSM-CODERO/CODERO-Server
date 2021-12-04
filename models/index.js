@@ -1,9 +1,13 @@
 'use strict';
 
 const Sequelize = require('sequelize');
+const User = require('./user');
+const Comment = require('./comment');
+const Like = require('./like');
+const Board = require('./board');
 
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname +'/../config/config.json')[env];
+const config = require('../config/config.json')[env];
 const db = {};
 
 const sequelize = new Sequelize(
@@ -16,22 +20,19 @@ const sequelize = new Sequelize(
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-db.User = require("./user")(sequelize, Sequelize);
-db.Comment = require("./comment")(sequelize, Sequelize);
-db.Board = require("./board")(sequelize, Sequelize);
-db.Like = require("./like")(sequelize, Sequelize);
+db.User = User;
+db.Comment = Comment;
+db.Board = Board;
+db.Like = Like;
 
-db.User.hasMany(db.Comment, { foreignKey: "user_id", tatgetKey: "user_id"});
-db.Comment.belongsTo(db.User, { foreignKey: "user_id"});
+User.init(sequelize);
+Comment.init(sequelize);
+Like.init(sequelize);
+Board.init(sequelize);
 
-db.User.hasMany(db.Like, { foreignKey: "user_id", tatgetKey: "user_id"});
-db.Like.belongsTo(db.User, { foreignKey: "user_id"});
-
-db.Board.hasMany(db.Comment, { foreignKey: "board_id", tatgetKey: "board_id"});
-db.Comment.belongsTo(db.Board, { foreignKey: "board_id"});
-
-db.Board.hasMany(db.Like, { foreignKey: "board_id", tatgetKey: "board_id"});
-db.Like.belongsTo(db.Board, { foreignKey: "board_id"});
-
+User.associate(db);
+Comment.associate(db);
+Like.associate(db);
+Board.associate(db);
 
 module.exports = db;
