@@ -19,10 +19,6 @@ module.exports = (sequelize, Datatypes) => {
       type: Datatypes.TEXT,
       allowNull: true,
     },
-    reply_comment_id: {
-      type: Datatypes.INTEGER,
-      allowNull: true,
-    },
     picture: {
       type: Datatypes.STRING,
       allowNull: false,
