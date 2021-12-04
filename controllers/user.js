@@ -17,6 +17,7 @@ const sign_up = async (req, res) => {
         res.status(409).json({
             message: "중복된 이메일 또는 닉네임"
         })
+        console.error(err);
     }
 };
 
