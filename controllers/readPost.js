@@ -1,5 +1,4 @@
 const { Board } = require("../models");
-const { beforeFindAfterExpandIncludeAll } = require("../models/user");
 
 const ReadOnePost = async(req, res) => {
     const BoardId = req.params.board_id;
