@@ -20,6 +20,9 @@ db.User = require("./user")(sequelize, Sequelize);
 db.Comment = require("./comment")(sequelize, Sequelize);
 db.Board = require("./board")(sequelize, Sequelize);
 db.Like = require("./like")(sequelize, Sequelize);
+db.RefreshToken = require("./refresh_token")(sequelize, Sequelize);
+db.Role = require("./role")(sequelize, Sequelize);
+db.userRole = require("./user_roles")(sequelize, Sequelize);
 
 db.User.hasMany(db.Comment, { foreignKey: "user_id", tatgetKey: "user_id"});
 db.Comment.belongsTo(db.User, { foreignKey: "user_id"});
@@ -33,5 +36,7 @@ db.Comment.belongsTo(db.Board, { foreignKey: "board_id"});
 db.Board.hasMany(db.Like, { foreignKey: "board_id", tatgetKey: "board_id"});
 db.Like.belongsTo(db.Board, { foreignKey: "board_id"});
 
+db.User.hasMany(db.RefreshToken, { foreignKey: "user_id", tatgetKey: "user_id"});
+db.RefreshToken.belongsTo(db.User, { foreignKey: "user_id"});
 
 module.exports = db;
