@@ -1,4 +1,5 @@
 const express = require("express");
+const morgan = require("morgan");
 const app = express();
 const { sequelize } = require("./models");
 const router = require("./routes/index");
@@ -10,9 +11,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 
 app.use("/", router);
-
+app.use(morgan('dev'));
 app.set("jwt-secret", process.env.JWT_KEY);
-
 
 sequelize.sync({ force : false })
     .then(() => {
