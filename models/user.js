@@ -12,7 +12,7 @@ module.exports =(sequelize, Datatypes) => {
       allowNull: false,
       unique: true,
     },
-    nick_id: {
+    nickname: {
       type: Datatypes.STRING(10),
       allowNull: false,
       unique: true,
