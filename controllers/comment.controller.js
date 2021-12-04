@@ -1,4 +1,4 @@
-const { Comment } = require("../models/comment");
+const { Comment } = require("../models");
 
 const GetComment = async(req, res) => {
     const BoardID = req.decoded.board_id;
@@ -44,6 +44,7 @@ const Commentcreate = async(req, res) => {
         res.status(404).json({
             message: "Failed Created Comment"
         });
+        console.error(err)
     }
 }
 
