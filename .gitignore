@@ -1,5 +1,7 @@
 # dependencies
 node_modules
+package-lock.json
+yarn.lock
 
 # dotenv
 .env
@@ -7,12 +9,6 @@ node_modules
 # config
 config
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-
 # uploadImage
-=======
->>>>>>> board
->>>>>>> Stashed changes
+
 uploads
