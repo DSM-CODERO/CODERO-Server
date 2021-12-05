@@ -1,9 +1,9 @@
-const Sequelize = require('sequelize'); 
- 
 module.exports =(sequelize, Datatypes) => { 
   return sequelize.define("refresh_token", { 
     id: { 
-        type: Datatypes.BIGINT, 
+        type: Datatypes.BIGINT,
+        allowNull: false,
+        autoIncrement: true,
         primaryKey: true, 
     }, 
     user_id: { 
