@@ -9,19 +9,12 @@ const upload = multer({
         s3: s3,
         bucket: 'elasticbeanstalk-us-east-2-079870045884',
         acl: 'public-read-write',
-        filefilter: (req, file, cb) => {
-            const ext = path.extname(file.originalname);
-            if(ext !== "jpeg" || "jpg" || "png" || "gif" || "pdf" || "svg") {
-                return cb(null, false)
-            }
-            cb(null, true)
-        },
         key: (req, file, cb) => {
-            cb(null, Date.now() + '.' + file.originalname.split('.').pop()); 
+            cb(null, Math.floor(Math.random() * 1000).toString() + Date.now() + '.' + file.originalname.split('.').pop());
         },
         limit: {
-            filesize: 1024 * 1024 * 20
-          },
+            fileSize: 1024 * 1024 * 20
+        },
     }),
 });
 module.exports = upload;
