@@ -23,7 +23,7 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage});
 
 router.get('/', verifyToken, commentCtrl.GetComment);
-router.post("/create", verifyToken, upload.array('image'), commentCtrl.Commentcreate);
+router.post("/", verifyToken, upload.array('image'), commentCtrl.Commentcreate);
 router.patch('/:id', verifyToken, commentCtrl.Commentupdate);
 router.delete('/:id', verifyToken, commentCtrl.Commentdelete);
 

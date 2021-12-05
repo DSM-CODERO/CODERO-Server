@@ -13,6 +13,10 @@ module.exports =(sequelize, Datatypes) => {
       primaryKey: true,
       allowNull: false,
     },
+    nickname: {
+        type: Datatypes.STRING(10),
+        allowNull: false,
+    },
     title: {
       type: Datatypes.STRING(30),
       allowNull: false,
@@ -37,10 +41,7 @@ module.exports =(sequelize, Datatypes) => {
       allowNull: false,
       defaultValue: Sequelize.NOW
     },
-    updated_at: {
-      type: Datatypes.DATE,
-      allowNull: false,
-    }
+
   },
   {
     sequelize,
@@ -53,4 +54,3 @@ module.exports =(sequelize, Datatypes) => {
     collate: 'utf8mb4_general_ci',
   });
 };
-
