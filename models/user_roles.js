@@ -1,5 +1,3 @@
-const Sequelize = require('sequelize');
-
 module.exports =(sequelize, Datatypes) => { 
     return sequelize.define("like", { 
       users_id: { 
