@@ -19,11 +19,7 @@ module.exports = (sequelize, Datatypes) => {
       type: Datatypes.TEXT,
       allowNull: true,
     },
-<<<<<<< HEAD
-    picture: {
-=======
     image: {
->>>>>>> develop
       type: Datatypes.STRING,
       allowNull: true,
     },
