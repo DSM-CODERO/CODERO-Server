@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-const Sequelize = require('sequelize');
-
 module.exports =(sequelize, Datatypes) => {
   return sequelize.define("role", {
     id: {
@@ -20,31 +17,5 @@ module.exports =(sequelize, Datatypes) => {
     tableName: 'roles',
     paranoid: false,
     charset: 'utf8',
-    collate: 'utf8_general_ci',
   })
 }
-
-=======
-module.exports =(sequelize, Datatypes) => { 
-  return sequelize.define("role", { 
-    id: { 
-      type: Datatypes.INTEGER, 
-      allowNull: false, 
-      primaryKey: true, 
-    }, 
-    name: {  
-      type: Datatypes.STRING, 
-      allowNull: false, 
-    } 
-  }, 
-  { 
-    sequelize, 
-    timestamps: false, 
-    modelName: 'Role', 
-    tableName: 'roles', 
-    paranoid: false, 
-    charset: 'utf8', 
-    collate: 'utf8_general_ci', 
-  }) 
-} 
->>>>>>> develop
