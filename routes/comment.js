@@ -20,10 +20,10 @@ const storage = multer.diskStorage({
   },
 })
 
-const upload = multer({storage: storage});
+const upload = multer({storage: storage}).array("image", 12);
 
 router.get('/', verifyToken, commentCtrl.GetComment);
-router.post("/", verifyToken, upload.array('image'), commentCtrl.Commentcreate);
+router.post("/", verifyToken, upload, commentCtrl.Commentcreate);
 router.patch('/:id', verifyToken, commentCtrl.Commentupdate);
 router.delete('/:id', verifyToken, commentCtrl.Commentdelete);
 
