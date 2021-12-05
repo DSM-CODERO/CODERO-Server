@@ -21,24 +21,28 @@ const Commentcreate = async(req, res) => {
     const UserID = req.decoded.user_id;
     const BoardID = req.decoded.board_id;
     const nickName = req.decoded.nickname;
-    const Image = req.body;
+    const Image = req.files;
     const { context } = req.body;
-
+    const path = Image.map(img => img.path);
+    
     try{
         const result = await Comment.findOne({
             where : {
                 board_id : BoardID
             },
         });
+
         await result.create({
             user_id : UserID,
             nickname : nickName,
             context : context,
-            picture: Image.path
+            image : Image
         });
+
         res.status(200).json({ 
             result,
-            message: "Comment Created successfully" 
+            message: "Comment Created successfully" ,
+            path
         });
     } catch(err){
         res.status(404).json({

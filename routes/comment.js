@@ -20,7 +20,11 @@ const storage = multer.diskStorage({
   },
 })
 
+<<<<<<< HEAD
 const upload = multer({storage: storage}).array("images", 5);
+=======
+const upload = multer({storage: storage}).array("image", 12);
+>>>>>>> develop
 
 router.get('/', verifyToken, commentCtrl.GetComment);
 router.post("/", verifyToken, upload, commentCtrl.Commentcreate);

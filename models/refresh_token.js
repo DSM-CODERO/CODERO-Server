@@ -5,7 +5,7 @@ module.exports =(sequelize, Datatypes) => {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true, 
-    }, 
+    },
     user_id: { 
         type: Datatypes.INTEGER, 
         allowNull: false, 
@@ -23,7 +23,7 @@ module.exports =(sequelize, Datatypes) => {
     sequelize, 
     timestamps: false, 
     modelName: 'Refresh_token', 
-    tableName: 'refresh_token', 
+    tableName: 'refresh_tokens', 
     paranoid: false, 
     charset: 'utf8', 
     collate: 'utf8_general_ci', 

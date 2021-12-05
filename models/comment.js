@@ -19,7 +19,11 @@ module.exports = (sequelize, Datatypes) => {
       type: Datatypes.TEXT,
       allowNull: true,
     },
+<<<<<<< HEAD
     picture: {
+=======
+    image: {
+>>>>>>> develop
       type: Datatypes.STRING,
       allowNull: true,
     },
@@ -30,10 +34,6 @@ module.exports = (sequelize, Datatypes) => {
       type: Datatypes.DATE,
       allowNull: false,
       defaultValue: Sequelize.NOW
-    },
-    updated_at: {
-      type: Datatypes.DATE,
-      allowNull: false,
     }
   },
   {
