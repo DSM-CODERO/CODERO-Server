@@ -1,5 +1,5 @@
 module.exports =(sequelize, Datatypes) => { 
-    return sequelize.define("like", { 
+    return sequelize.define("user_role", { 
       users_id: { 
         type: Datatypes.INTEGER, 
         allowNull: false, 
@@ -13,7 +13,7 @@ module.exports =(sequelize, Datatypes) => {
     { 
       sequelize, 
       timestamps: false, 
-      modelName: 'User_roles', 
+      modelName: 'User_role', 
       tableName: 'user_roles', 
       paranoid: false, 
       charset: 'utf8', 
