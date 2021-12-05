@@ -7,7 +7,7 @@ const s3 = new aws.S3();
 const upload = multer({
     storage: multerS3({
         s3: s3,
-        bucket: 'elasticbeanstalk-us-east-2-079870045884',
+        bucket: 'elasticbeanstalk-ap-northeast-9-820927005893',
         acl: 'public-read-write',
         key: (req, file, cb) => {
             cb(null, Math.floor(Math.random() * 1000).toString() + Date.now() + '.' + file.originalname.split('.').pop());
