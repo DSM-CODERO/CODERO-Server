@@ -1,7 +1,6 @@
 # dependencies
 node_modules
 
-
 # dotenv
 .env
 
@@ -9,5 +8,4 @@ node_modules
 config
 
 # uploadImage
-
 uploads

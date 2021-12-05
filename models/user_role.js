@@ -19,4 +19,4 @@ module.exports =(sequelize, Datatypes) => {
       charset: 'utf8', 
       collate: 'utf8_general_ci', 
     }) 
-  } 
+} 

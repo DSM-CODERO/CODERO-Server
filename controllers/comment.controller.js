@@ -21,7 +21,7 @@ const Commentcreate = async(req, res) => {
     const UserID = req.decoded.user_id;
     const BoardID = req.decoded.board_id;
     const nickName = req.decoded.nickname;
-    const Image = req.files;
+    const Image = req.files.location;
     const { context } = req.body;
     const path = Image.map(img => img.path);
     
