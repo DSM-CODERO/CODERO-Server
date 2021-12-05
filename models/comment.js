@@ -21,7 +21,7 @@ module.exports = (sequelize, Datatypes) => {
     },
     picture: {
       type: Datatypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     isDeleted: {
       type: Datatypes.BOOLEAN,
