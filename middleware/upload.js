@@ -8,7 +8,7 @@ const upload = multer({
     storage: multerS3({
         s3: s3,
         bucket: 'elasticbeanstalk-us-east-2-079870045884',
-        acl: 'public-read',
+        acl: 'public-read-write',
         filefilter: (req, file, cb) => {
             const ext = path.extname(file.originalname);
             if(ext !== "jpeg" || "jpg" || "png" || "gif" || "pdf" || "svg") {
@@ -17,7 +17,7 @@ const upload = multer({
             cb(null, true)
         },
         key: (req, file, cb) => {
-            cb(null, Date.now() + '.' + file.originalname.split('.').pop()); // 이름 설정
+            cb(null, Date.now() + '.' + file.originalname.split('.').pop()); 
         },
         limit: {
             filesize: 1024 * 1024 * 20
