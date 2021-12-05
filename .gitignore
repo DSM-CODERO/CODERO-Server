@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # dependencies
 node_modules
 
@@ -9,18 +8,4 @@ node_modules
 config
 
 # uploadImage
-=======
-# dependencies
-node_modules
-
-
-# dotenv
-.env
-
-# config
-config
-
-# uploadImage
-
->>>>>>> develop
 uploads
