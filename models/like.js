@@ -8,7 +8,7 @@ module.exports =(sequelize, Datatypes) => {
       primaryKey: true,
       unique: true,
     },
-    board_id: { 
+    board_id: {
       type: Datatypes.INTEGER,
       allowNull: false,
       primaryKey: true,
