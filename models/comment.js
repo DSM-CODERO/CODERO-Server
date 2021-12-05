@@ -19,11 +19,7 @@ module.exports = (sequelize, Datatypes) => {
       type: Datatypes.TEXT,
       allowNull: true,
     },
-    reply_comment_id: {
-      type: Datatypes.INTEGER,
-      allowNull: true,
-    },
-    picture: {
+    image: {
       type: Datatypes.STRING,
       allowNull: false,
     },
@@ -34,10 +30,6 @@ module.exports = (sequelize, Datatypes) => {
       type: Datatypes.DATE,
       allowNull: false,
       defaultValue: Sequelize.NOW
-    },
-    updated_at: {
-      type: Datatypes.DATE,
-      allowNull: false,
     }
   },
   {
