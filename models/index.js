@@ -3,7 +3,7 @@
 const Sequelize = require('sequelize');
 
 const env = process.env.NODE_ENV || 'development';
-const config = require("../config/config.json")[env];
+const config = require("/../config/config.json")[env];
 const db = {};
 
 const sequelize = new Sequelize(
@@ -16,7 +16,6 @@ const sequelize = new Sequelize(
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-
 db.User = this.User;
 db.Comment = this.Comment;
 db.Board = this.Board;
@@ -28,12 +27,7 @@ db.Board = require("./board")(sequelize, Sequelize);
 db.Like = require("./like")(sequelize, Sequelize);
 db.RefreshToken = require("./refresh_token")(sequelize, Sequelize);
 db.Role = require("./role")(sequelize, Sequelize);
-db.userRole = require("./user_roles")(sequelize, Sequelize);
-
-db.RefreshToken = require("./refresh_token")(sequelize, Sequelize);
-db.Role = require("./role")(sequelize, Sequelize);
-db.userRole = require("./user_roles")(sequelize, Sequelize);
-
+db.userRole = require("./user_role")(sequelize, Sequelize);
 
 db.User.hasMany(db.Comment, { foreignKey: "user_id", tatgetKey: "user_id"});
 db.Comment.belongsTo(db.User, { foreignKey: "user_id"});
