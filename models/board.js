@@ -25,7 +25,7 @@ module.exports =(sequelize, Datatypes) => {
       type: Datatypes.TEXT,
       allowNull: false,
     },
-    picture: {
+    image: {
       type: Datatypes.STRING,
       allowNull: true,
     },
@@ -41,7 +41,6 @@ module.exports =(sequelize, Datatypes) => {
       allowNull: false,
       defaultValue: Sequelize.NOW
     },
-
   },
   {
     sequelize,
