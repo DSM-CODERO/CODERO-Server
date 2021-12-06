@@ -6,6 +6,7 @@ module.exports = (sequelize, Datatypes) => {
       type: Datatypes.INTEGER,
       allowNull: false,
       primaryKey: true,
+      autoIncrement: true,
     },
     board_id: {
       type: Datatypes.INTEGER,
@@ -31,10 +32,6 @@ module.exports = (sequelize, Datatypes) => {
       allowNull: false,
       defaultValue: Sequelize.NOW
     },
-    updated_at: {
-      type: Datatypes.DATE,
-      allowNull: false,
-    }
   },
   {
     sequelize,
