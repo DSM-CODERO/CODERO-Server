@@ -1,18 +1,19 @@
 const router = require("express")();
-const multer = require("multer")
 const controller = require("../controllers/comment.controller");
 const verifyToken = require("../middleware/token");
 const path = require("path");
 
-const storage = multer.diskStorage({
-  destination: "uploads/",
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + "-" + file.originalname)
-  },
+const upload = require("../middleware/upload");
+const multer = require("multer")
+// const storage = multer.diskStorage({
+//   destination: "uploads/",
+//   filename: (req, file, cb) => {
+//     cb(null, Date.now() + "-" + file.originalname)
+//   },
  
-})
+// })
 
-const upload = multer({storage: storage});
+// const upload = multer({storage: storage});
 
 router.get('/:board_id/comment', controller.GetComment);
 router.post("/:board_id/comment", verifyToken, upload.single('image'), controller.Commentcreate);
