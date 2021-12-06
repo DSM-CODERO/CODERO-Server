@@ -39,7 +39,7 @@ const createPost = async(req, res) => {
                 title, 
                 context,
                 filed,
-                image : image.path
+                image : image.location
             });
             
             res.status(200).json({
