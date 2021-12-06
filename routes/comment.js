@@ -1,30 +1,22 @@
 const router = require("express")();
 const multer = require("multer")
-const commentCtrl = require("../controllers/comment.controller");
+const controller = require("../controllers/comment.controller");
 const verifyToken = require("../middleware/token");
+const path = require("path");
 
 const storage = multer.diskStorage({
   destination: "uploads/",
   filename: (req, file, cb) => {
     cb(null, Date.now() + "-" + file.originalname)
   },
-  filefilter: (req, file, cb) => {
-    const ext = path.extname(file.originalname);
-    if(ext !== "jpeg" || "jpg" || "png" || "gif" || "pdf" || "svg") {
-        return cb(null, false)
-    }
-    cb(null, true)
-  },
-  limit: {
-    filesize: 1024 * 1024 * 20
-  },
+ 
 })
 
 const upload = multer({storage: storage});
 
-router.get('/', verifyToken, commentCtrl.GetComment);
-router.post("/", verifyToken, upload.array('image'), commentCtrl.Commentcreate);
-router.patch('/:id', verifyToken, commentCtrl.Commentupdate);
-router.delete('/:id', verifyToken, commentCtrl.Commentdelete);
+router.get('/:board_id/comment', controller.GetComment);
+router.post("/:board_id/comment", verifyToken, upload.single('image'), controller.Commentcreate);
+router.patch('/:baord_id/comment/:comment_id', verifyToken, controller.Commentupdate);
+router.delete('/:board_id/comment/:comment_id', verifyToken, controller.Commentdelete);
 
 module.exports = router;

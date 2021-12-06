@@ -16,6 +16,6 @@ router.use("/board", like);
 
 router.use("/user", user);
 
-router.use("/board/:board_id/comment", comment)
+router.use("/board", comment)
 
 module.exports = router;
