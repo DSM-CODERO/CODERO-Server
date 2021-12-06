@@ -31,9 +31,8 @@ const Commentcreate = async(req, res) => {
             user_id : UserID,
             nickname : nickName,
             context : context,
-            picture: Image.path,
             board_id : BoardId,
-            image : Image.path
+            image : Image.location
         })
         res.status(200).json({ 
             message: "댓글 작성 성공"
