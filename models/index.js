@@ -17,10 +17,10 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 
-db.User = User;
-db.Comment = Comment;
-db.Board = Board;
-db.Like = Like;
+db.User = this.User;
+db.Comment = this.Comment;
+db.Board = this.Board;
+db.Like = this.Like;
 
 db.User = require("./user")(sequelize, Sequelize);
 db.Comment = require("./comment")(sequelize, Sequelize);
