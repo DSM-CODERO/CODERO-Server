@@ -1,7 +1,5 @@
 const { Comment } = require("../models");
 const multer = require("multer");
-const { Board } = require("../models");
-const board = require("../models/board");
 
 const GetComment = async(req, res) => {
     const BoardID = req.params.board_id;
@@ -26,7 +24,8 @@ const Commentcreate = async(req, res) => {
     const nickName = req.decoded.nickname;
     const Image = req.file;
     const { context } = req.body;
-
+    const path = Image.map(img => img.path);
+    
     try{
         await Comment.create({
             user_id : UserID,
@@ -34,9 +33,22 @@ const Commentcreate = async(req, res) => {
             context : context,
             picture: Image.path,
             board_id : BoardId
+        })
+        const result = await Comment.findOne({
+            where : {
+                board_id : BoardID
+            },
         });
+
+        await result.create({
+            user_id : UserID,
+            nickname : nickName,
+            context : context,
+            image : Image.path
+        });
+
         res.status(200).json({ 
-            message: "댓글 작성 성공" 
+            message: "댓글 작성 성공"
         });
     } catch(err){
         res.status(404).json({
