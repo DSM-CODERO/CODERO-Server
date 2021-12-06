@@ -1,7 +1,10 @@
 const { Comment } = require("../models");
+const multer = require("multer");
+const { Board } = require("../models");
+const board = require("../models/board");
 
 const GetComment = async(req, res) => {
-    const BoardID = req.decoded.board_id;
+    const BoardID = req.params.board_id;
     
     try{
         const comment = await Comment.findAll({
@@ -19,30 +22,25 @@ const GetComment = async(req, res) => {
 
 const Commentcreate = async(req, res) => {
     const UserID = req.decoded.user_id;
-    const BoardID = req.decoded.board_id;
+    const BoardId = req.params.board_id;
     const nickName = req.decoded.nickname;
-    const Image = req.body;
+    const Image = req.file;
     const { context } = req.body;
 
     try{
-        const result = await Comment.findOne({
-            where : {
-                board_id : BoardID
-            },
-        });
-        await result.create({
+        await Comment.create({
             user_id : UserID,
             nickname : nickName,
             context : context,
-            picture: Image.path
+            picture: Image.path,
+            board_id : BoardId
         });
         res.status(200).json({ 
-            result,
-            message: "Comment Created successfully" 
+            message: "댓글 작성 성공" 
         });
     } catch(err){
         res.status(404).json({
-            message: "Failed Created Comment"
+            message: "댓글 작성 실패"
         });
         console.error(err)
     }
@@ -51,7 +49,7 @@ const Commentcreate = async(req, res) => {
 
 const Commentupdate = async(req, res) => {
     const UserID = req.decoded.user_id;
-    const CommentID = req.body;
+    const CommentID = req.params.comment_id;
     const { context } = req.body;
 
     try{
@@ -62,24 +60,27 @@ const Commentupdate = async(req, res) => {
         });
         if(result.user_id !== UserID) {
             res.status(400).json({
-                message: "Failed Updated Comment"
+                message: "본인 댓글만 수정 가능"
             });
-        } else await result.update({
+        } else{
+            await result.update({
                 context : context,
             });
             res.status(200).json({
-                message: "Comment Updated successfully"
+                message: "댓글 수정 성공"
             });
+        } 
     } catch(err) {
         res.status(403).json({
-            message: "Failed Updated Comment"
+            message: "댓글 수정 실패"
         });
+        console.error(err);
     }
 } 
 
 const Commentdelete = async(req, res) => {
     const UserID = req.decoded.user_id;
-    const CommentID = req.body;
+    const CommentID = req.params.comment_id;
 
     try{
         const result = await Comment.findOne({
@@ -89,17 +90,17 @@ const Commentdelete = async(req, res) => {
         });
         if(result.user_id !== UserID) {
             res.status(400).json({
-                message: "Comments made by other users cannot be deleted."
+                message: "본인 댓글만 삭제 가능"
             });
         } else {
             await result.destroy();
             res.status(200).json({
-                message: "Comment Deleted successfully"
+                message: "댓글 삭제 성공"
             });
         };
     } catch(err) {
         res.status(403).json({
-            message: "Failed Deleted Comment"
+            message: "댓글 삭제 실패"
         });
     }
 } 
