@@ -20,9 +20,9 @@ module.exports = (sequelize, Datatypes) => {
       type: Datatypes.TEXT,
       allowNull: true,
     },
-    picture: {
+    image: {
       type: Datatypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     isDeleted: {
       type: Datatypes.BOOLEAN,
