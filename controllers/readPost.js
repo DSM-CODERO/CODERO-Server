@@ -24,12 +24,12 @@ const ReadOnePost = async(req, res) => {
 const ReadAllPost = async(req, res) => {
     const NickName  = req.params.nickname;
 
-    const pageNum = req.query.page;
-    const offset = 0;
-
     try{
+        let pageNum = req.query.page;
+        let offset = 0;
+    
         if(pageNum > 1){
-            offset = 7 * (pageNum -1)
+            offset = 8 * (pageNum -1)
         };
         const boards = await Board.findAll({
             where: {
@@ -47,63 +47,64 @@ const ReadAllPost = async(req, res) => {
         res.status(404).json({
             message: "작성된 게시물 없음"
         })
+        console.error(err);
     }
 };
 
-const ReadAllView = async(req, res) => {
+const ReadFiledPost = async(req, res) => {
+    const Filed = req.params.filed;
 
-    const pageNum = req.query.page;
-    const offset = 0;
-    
     try{
+        let pageNum = req.query.page;
+        let offset = 0;
         if(pageNum > 1){
-            offset = 7 * (pageNum -1)
+            offset = 8 * (pageNum - 1)
+        };
+        const boards = await Board.findAll({
+            where: {
+                filed: Filed
+            },
+            offset : offset,
+            limit: 8,
+            order: [['created_at', 'DESC']],
+        });
+
+        res.status(200).json(boards);
+    } catch(err) {
+        res.status(404).json({
+            message: "이 분야 게시글 없음"
+        });
+        console.error(err);
+    }
+}
+
+const ReadAllView = async(req, res) => {
+     
+    try{
+        let pageNum = req.query.page;
+        let offset = 0;
+
+        if(pageNum > 1){
+            offset = 8 * (pageNum -1)
         };
         const boards = await Board.findAll({
             offset: offset,
             limit: 8,
             order: [['created_at', 'DESC']] 
-            });
-    
+        });
         res.status(200).json(boards);
+
     } catch(err)
     {
         res.status(404).json({
             message: "작성된 게시물 없음"
         });
     }
-
 };
-
-const ReadFiledPost = async(res, req) => {
-    const filed = req.body;
-    const offset = 0;
-
-    try{
-        if(pageNum > 1){
-            offset = 7 * (pageNum - 1)
-        };
-        const boards = await Board.findAll({
-            where : {
-                filed : filed
-            },
-            offset: offset,
-            limit: 8,
-            order: [['createed_at', 'DESC']]
-        });
-        res.status(200).json(boards);
-    } catch (err)
-    {
-        res.status(404).json({
-            message : "작성된 게시물 없음"
-        });
-    }
-};
-
 
 module.exports = {
+    ReadFiledPost,
+    ReadAllView,
     ReadOnePost,
     ReadAllPost,
-    ReadAllView,
-    ReadFiledPost
 }
