@@ -5,7 +5,6 @@ const UpdatePost = async(req, res) => {
     const userId = req.decoded.user_id;
     const BoardId = req.params.board_id;
     const { title, context, filed } = req.body;
-    options = { multi: true };
     
     console.log(userId, BoardId, title, context, filed);
 
