@@ -8,7 +8,7 @@ const config = require("../config/config");
 const db = {};
 
 const sequelize = new Sequelize(
-    config,
+    { ... config, sync: false }
 );
 
 db.sequelize = sequelize;
@@ -24,11 +24,11 @@ db.Comment = require("./comment")(sequelize, Sequelize);
 db.Board = require("./board")(sequelize, Sequelize);
 db.Like = require("./like")(sequelize, Sequelize);
 
-db.User.hasMany(db.Comment, { foreignKey: "user_id", tatgetKey: "user_id"});
+db.User.hasMany(db.Comment, { foreignKey: "user_id", tatgetKey: "id"});
 db.Comment.belongsTo(db.User, { foreignKey: "user_id"});
 
-db.User.hasMany(db.Like, { foreignKey: "user_id", tatgetKey: "user_id"});
-db.Like.belongsTo(db.User, { foreignKey: "user_id"});
+db.User.hasMany(db.Like, { foreignKey: "user_id", tatgetKey: "id"});
+db.Like.belongsTo(db.User, { foreignKey: "id"});
 
 db.Board.hasMany(db.Comment, { foreignKey: "board_id", tatgetKey: "board_id"});
 db.Comment.belongsTo(db.Board, { foreignKey: "board_id"});
