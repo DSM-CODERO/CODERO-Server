@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/", router);
 app.use(morgan('dev'));
-app.set("jwt-secret", process.env.JWT_KEY);
+app.set("jwt-secret", process.env.JWTKEY);
 
 sequelize.sync({ force : false })
     .then(() => {
