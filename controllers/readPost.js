@@ -1,4 +1,5 @@
 const { Board } = require("../models");
+const { response } = require("../routes/readPost");
 
 const ReadOnePost = async(req, res) => {
     const BoardId = req.params.board_id;
@@ -102,9 +103,38 @@ const ReadAllView = async(req, res) => {
     }
 };
 
+const ReadMyPost = async(req, res) => {
+    const user = req.decoded.user_id;
+    
+    try{
+        let pageNum = req.query.page;
+        let offset = 0;
+        
+        if(pageNum > 1){
+            offset = 5 * (pageNum -1)
+        };
+        const boards = await Board.findAll({
+            where: {
+                user_id : user
+            },
+            offset: offset,
+            limit: 5,
+            order: [['created_at', 'DESC']]
+        });
+
+        res.status(200).json(boards);
+
+    } catch(err){
+        res.status(404).json({
+            message : "작성한 게시물 없음"
+        });
+    }
+};
+
 module.exports = {
     ReadFiledPost,
     ReadAllView,
     ReadOnePost,
     ReadAllPost,
+    ReadMyPost
 }
