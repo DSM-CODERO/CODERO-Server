@@ -4,8 +4,5 @@ node_modules
 # dotenv
 .env
 
-# config
-config
-
 # uploadImage
 uploads
