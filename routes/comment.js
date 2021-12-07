@@ -17,7 +17,7 @@ const multer = require("multer")
 
 router.get('/:board_id/comment', controller.GetComment);
 router.post("/:board_id/comment", verifyToken, upload.single('image'), controller.Commentcreate);
-router.patch('/:baord_id/comment/:comment_id', verifyToken, controller.Commentupdate);
+router.patch('/:board_id/comment/:comment_id', verifyToken, controller.Commentupdate);
 router.delete('/:board_id/comment/:comment_id', verifyToken, controller.Commentdelete);
 
 module.exports = router;
