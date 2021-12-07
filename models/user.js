@@ -28,7 +28,7 @@ module.exports =(sequelize, Datatypes) => {
     sequelize,
     timestamps: false,
     modelName: 'User',
-    tableName: 'users',
+    tableName: 'user',
     paranoid: false,
     charset: 'utf8',
     collate: 'utf8_general_ci',
