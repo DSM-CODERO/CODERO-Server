@@ -4,17 +4,17 @@ const multer = require("multer");
 const createPost = async(req, res) => {
     const image = req.file;
     const userId = req.decoded.user_id;
-    const userNickname = req.decoded.nickname;
+    const userName = req.decoded.username;
     const { title, context, filed } = req.body;
 
-    console.log(userId, userNickname, title, context, filed);
+    console.log(userId, userName, title, context, filed);
     console.log(image);
     if(image === undefined)
     {
         try{ 
             await Board.create({
                 user_id : userId,
-                nickname : userNickname,
+                username : userName,
                 title, 
                 context,
                 filed,
@@ -35,7 +35,7 @@ const createPost = async(req, res) => {
         try{ 
             await Board.create({
                 user_id : userId,
-                nickname : userNickname,
+                username : userName,
                 title, 
                 context,
                 filed,
