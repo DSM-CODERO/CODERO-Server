@@ -21,7 +21,7 @@ const GetComment = async(req, res) => {
 const Commentcreate = async(req, res) => {
     const UserID = req.decoded.user_id;
     const BoardId = req.params.board_id;
-    const nickName = req.decoded.nickname;
+    const userName = req.decoded.username;
     const Image = req.file;
     const { context } = req.body;
     
@@ -29,7 +29,7 @@ const Commentcreate = async(req, res) => {
         try{
             await Comment.create({
                 user_id: UserID,
-                nickname : nickName,
+                username : userName,
                 context: context,
                 board_id: BoardId
             })
@@ -46,7 +46,7 @@ const Commentcreate = async(req, res) => {
             try{
             await Comment.create({
                 user_id : UserID,
-                nickname : nickName,
+                username : userName,
                 context : context,
                 board_id : BoardId,
                 image : Image.location
