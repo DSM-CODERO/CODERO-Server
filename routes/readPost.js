@@ -4,7 +4,7 @@ const verifyToken = require("../middleware/token");
 
 router.get("/allview", controller.ReadAllView);
 router.get("/filed/:filed", controller.ReadFiledPost);
-router.get("/nickname/:nickname", controller.ReadAllPost);
+router.get("/username/:username", controller.ReadAllPost);
 router.get("/oneview/:board_id", controller.ReadOnePost);
 router.get("/mypage", verifyToken, controller.ReadMyPost);
 
