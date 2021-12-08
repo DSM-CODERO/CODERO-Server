@@ -24,16 +24,24 @@ db.Comment = require("./comment")(sequelize, Sequelize);
 db.Board = require("./board")(sequelize, Sequelize);
 db.Like = require("./like")(sequelize, Sequelize);
 
-db.User.hasMany(db.Comment, { foreignKey: "user_id", tatgetKey: "id"});
+
+
+
+db.RefreshToken = require("./refresh_token")(sequelize, Sequelize);
+
+db.User.hasMany(db.Comment, { foreignKey: "user_id", targetKey: "user_id"});
 db.Comment.belongsTo(db.User, { foreignKey: "user_id"});
 
-db.User.hasMany(db.Like, { foreignKey: "user_id", tatgetKey: "id"});
-db.Like.belongsTo(db.User, { foreignKey: "id"});
+db.User.hasMany(db.Like, { foreignKey: "user_id", targetKey: "user_id"});
+db.Like.belongsTo(db.User, { foreignKey: "user_id"});
 
-db.Board.hasMany(db.Comment, { foreignKey: "board_id", tatgetKey: "board_id"});
+db.Board.hasMany(db.Comment, { foreignKey: "board_id", targetKey: "board_id"});
 db.Comment.belongsTo(db.Board, { foreignKey: "board_id"});
 
-db.Board.hasMany(db.Like, { foreignKey: "board_id", tatgetKey: "board_id"});
+db.Board.hasMany(db.Like, { foreignKey: "board_id", targetKey: "board_id"});
 db.Like.belongsTo(db.Board, { foreignKey: "board_id"});
+
+db.User.hasMany(db.RefreshToken, { foreignKey: "user_id", targetKey: "user_id"});
+db.RefreshToken.belongsTo(db.User, { foreignKey: "user_id"});
 
 module.exports = db;
