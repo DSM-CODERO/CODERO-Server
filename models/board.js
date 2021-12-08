@@ -13,7 +13,7 @@ module.exports =(sequelize, Datatypes) => {
       primaryKey: true,
       allowNull: false,
     },
-    nickname: {
+    username: {
         type: Datatypes.STRING(10),
         allowNull: false,
     },
