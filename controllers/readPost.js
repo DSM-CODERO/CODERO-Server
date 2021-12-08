@@ -23,7 +23,7 @@ const ReadOnePost = async(req, res) => {
 };
 
 const ReadAllPost = async(req, res) => {
-    const NickName  = req.params.nickname;
+    const userName  = req.params.username;
 
     try{
         let pageNum = req.query.page;
@@ -34,7 +34,7 @@ const ReadAllPost = async(req, res) => {
         };
         const boards = await Board.findAll({
             where: {
-                nickname : NickName
+                userName : userName
             },
             offset: offset,
             limit: 8,
