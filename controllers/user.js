@@ -2,13 +2,13 @@ const { User } = require("../models");
 const jwt = require("jsonwebtoken");
 
 const sign_up = async (req, res) => {
-    const { email, password, nickname } = req.body;
+    const { email, password, username } = req.body;
 
     try{
         await User.create({
             email,
             password,
-            nickname
+            username
         });
         res.status(200).json({
             message: "회원가입 성공"
@@ -37,7 +37,7 @@ const login = async(req, res) => {
             const accessToken = jwt.sign({
                 user_id : user.user_id,
                 email : user.email,
-                nickname : user.nickname
+                username : user.username
             }, secretKey,
             {
                 expiresIn: "24h",
