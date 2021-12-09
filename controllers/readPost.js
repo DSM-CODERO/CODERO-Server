@@ -104,7 +104,7 @@ const ReadAllView = async(req, res) => {
 };
 
 const ReadMyPost = async(req, res) => {
-    const user = req.decoded.user_id;
+    const user = req.decoded.id;
     
     try{
         let pageNum = req.query.page;
