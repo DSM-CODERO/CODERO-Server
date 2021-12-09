@@ -2,7 +2,7 @@ const { Board } = require("../models");
 
 const UpdatePost = async(req, res) => {
 
-    const userId = req.decoded.user_id;
+    const userId = req.decoded.id;
     const BoardId = req.params.board_id;
     const { title, context, filed } = req.body;
     
