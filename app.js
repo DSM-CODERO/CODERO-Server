@@ -10,11 +10,7 @@ require("dotenv").config();
 
 const whitelist = ['*'];
 const corsOptions = {
-    origin: (origin, callback) => {
-    const isWhitelisted = whitelist.indexOf(origin) !== -1;
-    callback(null, isWhitelisted); 
-    // callback expects two parameters: error and options 
-    },
+    origin: "*",
     credentials:true
 }
 
