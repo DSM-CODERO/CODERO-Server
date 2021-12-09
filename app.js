@@ -4,12 +4,23 @@ const app = express();
 const { sequelize } = require("./models");
 const router = require("./routes/index");
 const PORT = process.env.PORT || 4000;
+const cors = require("cors");
 
 require("dotenv").config();
 
+const whitelist = ['*'];
+const corsOptions = {
+    origin: (origin, callback) => {
+    const isWhitelisted = whitelist.indexOf(origin) !== -1;
+    callback(null, isWhitelisted); 
+    // callback expects two parameters: error and options 
+    },
+    credentials:true
+}
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
-
+app.use(cors(corsOptions));
 app.use("/", router);
 app.use(morgan('dev'));
 app.set("jwt-secret", process.env.JWTKEY);
