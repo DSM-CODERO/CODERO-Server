@@ -12,7 +12,6 @@ const upload = multer({
     storage: multerS3({
         s3: s3,
         bucket: 'codero1',
-        acl: 'public-read',
         key: function(req, file, cb) {
             cb(null, Date.now() + '.' + file.originalname.split('.').pop());
         },
