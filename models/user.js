@@ -2,9 +2,9 @@ const Sequelize = require('sequelize');
 
 module.exports =(sequelize, Datatypes) => {
   return sequelize.define("user", {
-    id: {
+    user_id: {
       type: Datatypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
