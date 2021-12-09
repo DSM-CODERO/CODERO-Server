@@ -2,7 +2,7 @@ const { Like, Board } = require("../models");
 
 const likePost = async(req, res) => {
 
-    const userId = req.decoded.id;
+    const userId = req.decoded.user_id;
     const BoardId = req.params.board_id;
 
     try{
