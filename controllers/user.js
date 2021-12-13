@@ -50,10 +50,7 @@ const login = async(req, res) => {
                 user_id : user.user_id,
                 email : user.email,
                 username : user.username,
-            }, jwtSecret,
-            {
-                expiresIn: "4h",
-            });
+            }, jwtSecret);
 
             res.status(200).json({
                 message: "로그인 성공",
@@ -106,5 +103,5 @@ const email = async(req, res) => {
 module.exports = {
     sign_up,
     login,
-    email
+    email,
 };
