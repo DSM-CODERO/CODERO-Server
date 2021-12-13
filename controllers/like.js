@@ -1,7 +1,7 @@
 const { Like, Board } = require("../models");
 
 const likePost = async(req, res) => {
-
+    res.header("Access-Control-Allow-Origin", "*");
     const userId = req.decoded.user_id;
     const BoardId = req.params.board_id;
 
