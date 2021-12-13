@@ -1,6 +1,7 @@
 const { User } = require("../models");
 const jwt = require("jsonwebtoken");
 
+
 const sign_up = async (req, res) => {
     const { email, password, username } = req.body;
 
@@ -17,7 +18,6 @@ const sign_up = async (req, res) => {
         res.status(409).json({
             message: "중복된 이메일 또는 닉네임"
         })
-        console.error(err);
     }
 };
 
