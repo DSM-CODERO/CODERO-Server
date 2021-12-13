@@ -1,6 +1,7 @@
 const { Board, Like } = require("../models");
 
 const deletePost = async(req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     const BoardId  = req.params.board_id;
     const UserId = req.decoded.user_id;
 
