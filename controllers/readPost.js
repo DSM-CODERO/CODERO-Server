@@ -1,7 +1,6 @@
 const { Board } = require("../models");
 
 const ReadOnePost = async(req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
     const BoardId = req.params.board_id;
 
     try{
@@ -23,7 +22,6 @@ const ReadOnePost = async(req, res) => {
 };
 
 const ReadAllPost = async(req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
     const userName  = req.params.username;
 
     try{
@@ -54,7 +52,6 @@ const ReadAllPost = async(req, res) => {
 };
 
 const ReadFiledPost = async(req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
     const Filed = req.params.filed;
 
     try{
@@ -82,7 +79,6 @@ const ReadFiledPost = async(req, res) => {
 }
 
 const ReadAllView = async(req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
     try{
         let pageNum = req.query.page;
         let offset = 0;
@@ -106,7 +102,6 @@ const ReadAllView = async(req, res) => {
 };
 
 const ReadMyPost = async(req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
     const user = req.decoded.user_id;
     
     try{
