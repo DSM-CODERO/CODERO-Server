@@ -8,7 +8,6 @@ const cors = require("cors");
 
 require("dotenv").config();
 
-const whitelist = ['*'];
 const corsOptions = {
     origin: "*",
     credentials:true
