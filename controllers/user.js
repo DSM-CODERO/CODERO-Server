@@ -1,4 +1,6 @@
+require('dotenv').config();
 const { User } = require("../models");
+const { Transport } = require('../config/email');
 const jwt = require("jsonwebtoken");
 
 const sign_up = async (req, res) => {
@@ -59,7 +61,38 @@ const login = async(req, res) => {
     }
 };
 
+
+const email = async(req, res) => {
+    const generateRandom = function (min, max) {
+    const ranNum = Math.floor(Math.random()*(max-min+1)) + min;
+    return ranNum;
+    }
+
+    const number = generateRandom(111111,999999)
+
+    const { email } = req.body;
+
+    const mailOptions = {
+        from: process.env.USEREMAIL,
+        to: email,
+        subject: "[CODERO]인증 관련 이메일 입니다",
+        text: "오른쪽 숫자 6자리를 입력해주세요 : " + number
+    };
+
+    await Transport.sendMail(mailOptions, (error, responses) =>{
+        if(error){
+            res.json({msg:'err'});
+        }else{
+            res.json({msg:'success'});
+        }
+        Transport.close();
+    });
+}
+
+
+
 module.exports = {
     sign_up,
-    login
+    login,
+    email
 };
