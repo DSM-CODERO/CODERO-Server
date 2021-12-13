@@ -1,7 +1,6 @@
 const { Board } = require("../models");
 
 const UpdatePost = async(req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
     const userId = req.decoded.user_id;
     const BoardId = req.params.board_id;
     const { title, context, filed } = req.body;
