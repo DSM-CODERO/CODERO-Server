@@ -2,7 +2,6 @@ const { Comment } = require("../models");
 const multer = require("multer");
 
 const GetComment = async(req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
     const BoardID = req.params.board_id;
     
     try{
@@ -20,7 +19,6 @@ const GetComment = async(req, res) => {
 }
 
 const Commentcreate = async(req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
     const UserID = req.decoded.user_id;
     const BoardId = req.params.board_id;
     const userName = req.decoded.username;
@@ -66,7 +64,6 @@ const Commentcreate = async(req, res) => {
 
 
 const Commentupdate = async(req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
     const UserID = req.decoded.user_id;
     const CommentID = req.params.comment_id;
     const { Context } = req.body;
@@ -100,7 +97,6 @@ const Commentupdate = async(req, res) => {
 } 
 
 const Commentdelete = async(req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
     const UserID = req.decoded.user_id;
     const CommentID = req.params.comment_id;
 
