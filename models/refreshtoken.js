@@ -5,19 +5,15 @@ module.exports =(sequelize, Datatypes) => {
           allowNull: false, 
           autoIncrement: true, 
           primaryKey: true,  
-      }, 
-      user_id: {  
+      },
+      user_id: {
           type: Datatypes.INTEGER,  
           allowNull: false,  
       },  
       token: {   
           type: Datatypes.STRING,  
           allowNull: false,  
-      },  
-      expriyDate: {  
-          type: Datatypes.DATE,  
-          allowNull: false,  
-      }  
+      }, 
     },  
     {  
       sequelize,  
