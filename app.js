@@ -20,6 +20,7 @@ app.use(cors(corsOptions));
 app.use("/", router);
 app.use(morgan('dev'));
 app.set("jwt-secret", process.env.JWTKEY);
+app.set("refresh", process.env.JWTSECRET);
 
 sequelize.sync({ force : false })
     .then(() => {
