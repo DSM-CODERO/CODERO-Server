@@ -26,7 +26,8 @@ const sign_up = async (req, res) => {
 const login = async(req, res) => {
     const { email, password } = req.body;
     const secretKey = req.app.get("jwt-secret");
-    console.log(email, password, secretKey);
+    const jwtSecret = req.app.get("refresh")
+    console.log(email, password, secretKey, jwtSecret);
 
     try{
         const user = await User.findOne({
@@ -42,11 +43,22 @@ const login = async(req, res) => {
                 username : user.username
             }, secretKey,
             {
-                expiresIn: "24h",
+                expiresIn: "1h",
             });
+
+            const refreshtoken = jwt.sign({
+                user_id : user.user_id,
+                email : user.email,
+                username : user.username,
+            }, jwtSecret,
+            {
+                expiresIn: "4h",
+            });
+
             res.status(200).json({
                 message: "로그인 성공",
                 accessToken,
+                refreshtoken
             });
         } else {
             res.status(403).json({
