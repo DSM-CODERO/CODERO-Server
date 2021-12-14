@@ -10,7 +10,7 @@ require("dotenv").config();
 
 const corsOptions = {
     origin: "*",
-    method: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    method: [GET, POST, PUT, PATCH, DELETE],
     credentials:true
 }
 
