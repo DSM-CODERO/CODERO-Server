@@ -8,9 +8,9 @@ const cors = require("cors");
 
 require("dotenv").config();
 
-const whitelist = ['*'];
 const corsOptions = {
     origin: "*",
+    method: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials:true
 }
 
