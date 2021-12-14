@@ -59,7 +59,29 @@ const login = async(req, res) => {
     }
 };
 
+const viewMyPage = async(req, res) => {
+
+    try{
+        let username = req.decoded.username;
+        let email = req.decoded.email;
+        let Total = {username,email};
+
+        res.status(200).json(
+            Total
+        );
+        console.log(username, email);
+
+    } catch(err) {
+        res.status(400).json({
+            message: "등록되지 않는 유저 정보"
+        })
+        console.error(err);
+    };
+
+}
+
 module.exports = {
     sign_up,
-    login
+    login,
+    viewMyPage
 };
