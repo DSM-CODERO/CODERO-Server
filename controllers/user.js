@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { User } = require("../models");
+const { Transport } = require('../config/email');
 const jwt = require("jsonwebtoken");
 
 
@@ -70,7 +71,7 @@ const login = async(req, res) => {
 };
 
 const viewMyPage = async(req, res) => {
-
+    
     try{
         let username = req.decoded.username;
         let email = req.decoded.email;
