@@ -3,6 +3,7 @@ const { User } = require("../models");
 const { Transport } = require('../config/email');
 const jwt = require("jsonwebtoken");
 
+
 const sign_up = async (req, res) => {
     const { email, password, username } = req.body;
 
@@ -19,14 +20,13 @@ const sign_up = async (req, res) => {
         res.status(409).json({
             message: "중복된 이메일 또는 닉네임"
         })
-        console.error(err);
     }
 };
 
 const login = async(req, res) => {
     const { email, password } = req.body;
     const secretKey = req.app.get("jwt-secret");
-    const jwtSecret = req.app.get("refresh")
+    const jwtSecret = req.app.get("refresh-secret")
     console.log(email, password, secretKey, jwtSecret);
 
     try{
@@ -70,6 +70,25 @@ const login = async(req, res) => {
     }
 };
 
+const viewMyPage = async(req, res) => {
+    
+    try{
+        let username = req.decoded.username;
+        let email = req.decoded.email;
+        let Total = {username,email};
+
+        res.status(200).json(
+            Total
+        );
+        console.log(username, email);
+
+    } catch(err) {
+        res.status(400).json({
+            message: "등록되지 않는 유저 정보"
+        })
+        console.error(err);
+    };
+}
 
 const email = async(req, res) => {
     const generateRandom = function (min, max) {
@@ -104,4 +123,5 @@ module.exports = {
     sign_up,
     login,
     email,
+    viewMyPage
 };
