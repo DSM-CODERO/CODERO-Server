@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 const tokenMiddleware = async(req, res, next) => {
-    const token = req.headers["access-token"];
+    const token = req.headers.authorization.split('Bearer ')[1] || req.query.token;
 
     if (!token) {
         return res.status(403).json({
