@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 const tokenMiddleware = async(req, res, next) => {
-    const token = req.headers.authorization.split('Bearer ')[1] || req.query.token;
+    const token = req.headers["access-token"];
 
     if (!token) {
         return res.status(403).json({
@@ -11,7 +11,6 @@ const tokenMiddleware = async(req, res, next) => {
     try{
         await jwt.verify(token, req.app.get("jwt-secret"), (err, decoded)=> {
             if(err) throw err;
-
             req.decoded = decoded;
             next();
         });
@@ -21,5 +20,7 @@ const tokenMiddleware = async(req, res, next) => {
         });
     }
 };
+
+
 
 module.exports = tokenMiddleware;
