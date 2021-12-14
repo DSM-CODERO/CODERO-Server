@@ -88,7 +88,6 @@ const viewMyPage = async(req, res) => {
         })
         console.error(err);
     };
-
 }
 
 const email = async(req, res) => {
