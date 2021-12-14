@@ -4,7 +4,7 @@ const aws = require('aws-sdk');
 
 const path = require("path");
 
-const s3Config = require("../config/s3.json");
+const s3Config = require("../config/s3.js");
 
 const s3 = new aws.S3(s3Config);
 
