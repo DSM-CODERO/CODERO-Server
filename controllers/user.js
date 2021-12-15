@@ -74,11 +74,11 @@ const viewMyPage = async(req, res) => {
     try{
         let username = req.decoded.username;
         let email = req.decoded.email;
-        let Total = {username,email};
 
-        res.status(200).json(
-            Total
-        );
+        res.status(200).json({
+            username,
+            email
+        });
         console.log(username, email);
 
     } catch(err) {
