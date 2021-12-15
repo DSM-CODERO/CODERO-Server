@@ -22,7 +22,7 @@ const Commentcreate = async(req, res) => {
     const UserID = req.decoded.user_id;
     const BoardId = req.params.board_id;
     const userName = req.decoded.username;
-    const Image = req.file;
+    const Image = req.files;
     const { context } = req.body;
     
     if(Image === undefined){
