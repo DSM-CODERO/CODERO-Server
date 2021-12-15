@@ -24,7 +24,7 @@ app.set("refresh-secret", process.env.JWTSECRET);
 
 sequelize.sync({ force : false })
     .then(() => {
-        console.log("database 연결 성공")
+        console.log("Connected to Database")
     })
     .catch((err) => {
         console.error(err);

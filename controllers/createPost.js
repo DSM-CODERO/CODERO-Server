@@ -2,7 +2,7 @@ const { Board } = require("../models");
 const multer = require("multer");
 
 const createPost = async(req, res) => {
-    const image = req.file;
+    const image = req.files;
     const userId = req.decoded.user_id;
     const userName = req.decoded.username;
     const { title, context, filed } = req.body;

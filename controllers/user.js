@@ -3,7 +3,6 @@ const { User } = require("../models");
 const { Transport } = require('../config/email');
 const jwt = require("jsonwebtoken");
 
-
 const sign_up = async (req, res) => {
     const { email, password, username } = req.body;
 
@@ -91,7 +90,7 @@ const viewMyPage = async(req, res) => {
 }
 
 const email = async(req, res) => {
-    const generateRandom = function (min, max) {
+    const generateRandom = (min, max) => {
     const ranNum = Math.floor(Math.random()*(max-min+1)) + min;
     return ranNum;
     }
