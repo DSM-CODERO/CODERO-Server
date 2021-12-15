@@ -10,7 +10,7 @@ require("dotenv").config();
 
 const corsOptions = {
     origin: "*",
-    methods: [GET, PATCH, POST, DELETE],
+    method: ["GET", "POST", "PATCH", "DELETE"],
     credentials:true
 }
 
@@ -20,11 +20,11 @@ app.use(cors(corsOptions));
 app.use("/", router);
 app.use(morgan('dev'));
 app.set("jwt-secret", process.env.JWTKEY);
-app.set("refresh", process.env.JWTSECRET);
+app.set("refresh-secret", process.env.JWTSECRET);
 
 sequelize.sync({ force : false })
     .then(() => {
-        console.log("database 연결 성공")
+        console.log("Connected to Database")
     })
     .catch((err) => {
         console.error(err);
