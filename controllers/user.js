@@ -106,7 +106,7 @@ const email = async(req, res) => {
         text: "오른쪽 숫자 6자리를 입력해주세요 : " + number
     };
 
-    await Transport.sendMail(mailOptions, (error, responses) =>{
+    await Transport.sendMail(mailOptions, (res, error, responses) =>{
         if(error){
             console.responses(error);
             res.json({msg:'err'});
