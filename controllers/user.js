@@ -98,7 +98,7 @@ const email = async(req, res) => {
     const number = generateRandom(111111,999999)
 
     const { email } = req.body;
-
+    console.log(email);
     const mailOptions = {
         from: process.env.USEREMAIL,
         to: email,
@@ -108,10 +108,12 @@ const email = async(req, res) => {
 
     await Transport.sendMail(mailOptions, (error, responses) =>{
         if(error){
+            console.log(error);
             res.json({msg:'err'});
         }else{
             res.json({msg:'success'});
         }
+        res.send(number);
         Transport.close();
     });
 }
