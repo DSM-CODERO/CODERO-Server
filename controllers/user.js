@@ -111,7 +111,7 @@ const email = async(req, res) => {
             console.responses(error);
             res.json({msg:'err'});
         }else{
-            res.json({msg: 'sign_up'});
+            res.json({msg: 'success' + number});
         }
         Transport.close();
     });
