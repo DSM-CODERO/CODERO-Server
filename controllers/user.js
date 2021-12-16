@@ -108,12 +108,11 @@ const email = async(req, res) => {
 
     await Transport.sendMail(mailOptions, (error, responses) =>{
         if(error){
-            console.log(error);
+            console.responses(error);
             res.json({msg:'err'});
         }else{
-            res.json({msg:'success'});
+            res.send(number);
         }
-        res.send(number);
         Transport.close();
     });
 }
