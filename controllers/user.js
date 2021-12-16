@@ -112,6 +112,7 @@ const email = async(req, res) => {
             res.json({msg:'err'});
         }else{
             res.send(number);
+            console.log(number);
         }
         Transport.close();
     });
