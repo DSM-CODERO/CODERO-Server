@@ -1,5 +1,4 @@
 const { Comment } = require("../models");
-const multer = require("multer");
 
 const GetComment = async(req, res) => {
     const BoardID = req.params.board_id;

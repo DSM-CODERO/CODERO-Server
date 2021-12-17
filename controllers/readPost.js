@@ -1,5 +1,4 @@
 const { Board } = require("../models");
-const { response } = require("../routes/readPost");
 
 const ReadOnePost = async(req, res) => {
     const BoardId = req.params.board_id;

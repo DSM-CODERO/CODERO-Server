@@ -1,4 +1,4 @@
-const { Like, Board } = require("../models");
+const { Like } = require("../models");
 
 const likePost = async(req, res) => {
 
@@ -24,7 +24,6 @@ const likePost = async(req, res) => {
 };
 
 const unlikePost = async(req, res) => {
-    
     const userId = req.decoded.user_id;
     const BoardId = req.params.board_id;
 
@@ -41,7 +40,7 @@ const unlikePost = async(req, res) => {
         if(board.user_id !== userId)
         {
             res.status(403).json({
-                message : "본인 계정으로 좋아요 취소 가능"
+                message : "본인 계정으로만 좋아요 취소 가능"
             });
         } else {
             await board.destroy();
@@ -68,12 +67,6 @@ const readlikepost = async(req, res) => {
                 user_id : UserId,
             },
         });
-        
-        // const likeboards = await Board.findAll({
-        //     where: {
-        //         board_id : like.board_id
-        //     },
-        // });
         
         res.status(200).json(like);
 

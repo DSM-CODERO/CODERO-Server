@@ -19,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
 app.use("/", router);
 app.use(morgan('dev'));
+
 app.set("jwt-secret", process.env.JWTKEY);
 app.set("refresh-secret", process.env.JWTSECRET);
 
