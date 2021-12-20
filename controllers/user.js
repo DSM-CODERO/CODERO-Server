@@ -98,7 +98,7 @@ const email = async(req, res) => {
     const number = generateRandom(111111,999999)
 
     const { email } = req.body;
-
+    console.log(email);
     const mailOptions = {
         from: process.env.USEREMAIL,
         to: email,
@@ -106,11 +106,11 @@ const email = async(req, res) => {
         text: "오른쪽 숫자 6자리를 입력해주세요 : " + number
     };
 
-    await Transport.sendMail(mailOptions, (error, responses) =>{
+    await Transport.sendMail(mailOptions, (error, res) =>{
         if(error){
             res.json({msg:'err'});
         }else{
-            res.json({msg:'success'});
+            res.json({msg: 'success' + number});
         }
         Transport.close();
     });

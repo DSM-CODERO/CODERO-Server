@@ -11,7 +11,6 @@ module.exports =(sequelize, Datatypes) => {
     password: {
       type: Datatypes.STRING(60),
       allowNull: false,
-      unique: true,
     },
     username: {
       type: Datatypes.STRING(10),
@@ -30,7 +29,7 @@ module.exports =(sequelize, Datatypes) => {
     modelName: 'User',
     tableName: 'user',
     paranoid: false,
-    charset: 'utf8',
-    collate: 'utf8_general_ci',
+    charset: 'utf8mb4',
+    collate: 'utf8mb4_general_ci',
   });
 };
