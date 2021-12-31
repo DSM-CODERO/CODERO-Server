@@ -40,6 +40,7 @@
   "scripts": {
     "start": "env-cmd node src/app.js",
     "start:dev": "env-cmd -f .env.dev nodemon src/app.js",
+    "build": "node src/app.js",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "prettier:write": "yarn prettier --write .",
