@@ -113,7 +113,7 @@ const verifyEmail = async (req, res) => {
     if (error) {
       res.json({ msg: 'err' });
     } else {
-      res.json({ msg: `success${number}` });
+      res.json({ msg: `${number}` });
     }
     Transport.close();
   });
