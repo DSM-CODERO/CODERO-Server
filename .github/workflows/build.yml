@@ -19,11 +19,11 @@ jobs:
         with:
           node-version: '17.x'
 
-      - name: YARN install
-        run: yarn --frozen-lockfile
-
-      - name: Build
-        run: yarn start
+      - name: yarn install, and lint
+        working-directory: ./
+        run: |
+          yarn install --frozen-lockfile
+          yarn lint
 
       - name: Cache node modules
         uses: actions/cache@v2
