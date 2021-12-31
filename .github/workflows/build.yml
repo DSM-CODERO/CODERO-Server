@@ -23,7 +23,7 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Build
-        run: yarn start
+        run: yarn build
 
       - name: Cache node modules
         uses: actions/cache@v2
