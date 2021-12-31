@@ -30,7 +30,7 @@ sequelize
   .then(() => {
     console.log('Connected to Database');
   })
-  .catch(err => {
+  .catch((err) => {
     console.error(err);
   });
 
