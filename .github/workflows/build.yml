@@ -6,6 +6,10 @@ on:
       - master
       - main
       - develop
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
 
 jobs:
   build:
@@ -15,6 +19,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: c-hive/gha-yarn-cache@v2
+      - uses: bubkoo/auto-assign@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CONFIG_FILE: .github/auto-assign.yml
       - uses: actions/setup-node@v1
         with:
           node-version: '17.x'
