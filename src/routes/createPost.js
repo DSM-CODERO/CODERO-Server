@@ -1,5 +1,5 @@
 const router = require('express')();
-const controller = require('../controllers/createPost').default;
+const controller = require('../controllers/createPost');
 const verifyToken = require('../middleware/token');
 
 const upload = require('../middleware/upload');

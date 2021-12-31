@@ -1,11 +1,10 @@
 const Sequelize = require('sequelize');
 
-const mysql = require('mysql2');
 const config = require('../config/config');
 
 const db = {};
 
-const sequelize = new Sequelize({ ...config, dialect: mysql, sync: false });
+const sequelize = new Sequelize({ ...config, sync: false });
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
